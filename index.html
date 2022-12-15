@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http_equiv="expires" content="0">
+    <title>It's raining...</title>
+    <style>
+        #canvas {
+            display: block;
+            margin: 30px auto 30px auto;
+            background-color: blue;
+            width: 900px;
+            height: 500px;
+            z-index: 2;
+        }
+        button {
+            display: block;
+            margin: auto;
+            text-transform: uppercase;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        button:hover {
+            background-color: rgb(70, 70, 252);
+        }
+        button:active {
+            background-color: rgb(20, 20, 172);
+        }
+        #more {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body onload="initRaindrops()">
+    <button id="more" onclick="moreRain()">Больше дождя !!!</button>
+    <canvas id="canvas"></canvas>
+    <button id="clear" onclick="flushing()">Слить воду</button>
+    <script src="rain.js?version=1.0"></script>
+</body>
+</html>
