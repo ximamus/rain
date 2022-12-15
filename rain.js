@@ -6,6 +6,7 @@ const raindrops = [];
 let water = 0;
 let waterLevel = 150;
 let isFlushing = false;
+let gameOver = false;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -92,18 +93,30 @@ function render() {
     }
 
     ctx.fillStyle = '#74ccf4';
-    for (let i = 150; i >= waterLevel; i--) {
-        for (let j = 0; j <= cvs.width; j++) {
-            ctx.fillRect(j, i, 1, 1);
-        }
-    }
+    ctx.fillRect(0, waterLevel, cvs.width, cvs.height);
+    // for (let i = 150; i >= waterLevel; i--) {
+    //     for (let j = 0; j <= cvs.width; j++) {
+    //         ctx.fillRect(j, i, 1, 1);
+    //     }
+    // }
     if (isFlushing) {
         waterLevel++;
         if (waterLevel == 150) {
             isFlushing = false;
         }
     }
+    checkGameOver();
     //ctx.putImageData(id, 0, 0);
+}
+
+function checkGameOver() {
+    if (waterLevel == 0) {
+        gameOver = true;
+        ctx.fillStyle = 'black';
+        ctx.font = '30px Changa One';
+        ctx.fillText('Затопило!', 90, 80);
+        clearInterval(run);
+    } 
 }
 
 const run = setInterval(render, 30);
